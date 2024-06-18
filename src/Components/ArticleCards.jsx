@@ -4,22 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Link } from "react-router-dom"
 
-function ArticleCards({ articles }) {
+function ArticleCards({ article }) {
     return (
         <div>
-      <Box
-        sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignContent: "space-around",
-            gap: 2,
-        }}
-        >
-        {articles.map((article) => (
             <Card
             sx={{
               minWidth: 345,
@@ -27,9 +16,11 @@ function ArticleCards({ articles }) {
               minHeight: 300,
               maxHeight: 300,
             }}
-            key={article.title}
+        
+            // key={article.article_id}
             className="article-cards"
           >
+            <Link to={`/articles/${article.article_id}`}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -46,9 +37,8 @@ function ArticleCards({ articles }) {
                 </Typography>
               </CardContent>
             </CardActionArea>
+           </Link>
           </Card>
-        ))}
-      </Box>
     </div>
   );
 }
