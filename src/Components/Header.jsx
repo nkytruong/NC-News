@@ -25,7 +25,7 @@ function Header() {
             <Nav.Link href="/home">Home</Nav.Link>
             <NavDropdown title="Topics" id="collapsible-nav-dropdown">
             {topics.map((topic) => (
-                <NavDropdown.Item href={"/topics"} key={topic.slug}>{topic.slug}</NavDropdown.Item>
+                <NavDropdown.Item href={`/topics`} key={topic.slug}>{topic.slug}</NavDropdown.Item>
             ))}
               <NavDropdown.Divider />
               <NavDropdown.Item href="/topics">

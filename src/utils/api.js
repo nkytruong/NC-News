@@ -12,6 +12,14 @@ export const getArticles = () => {
     })
 }
 
+export const getArticle = (article_id) => {
+    return newsApi
+    .get(`/articles/${article_id}`)
+    .then((res) => {
+        return res.data
+    })
+}
+
 export const getTopics = () => {
     return newsApi
     .get("/topics")
