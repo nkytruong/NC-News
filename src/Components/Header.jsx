@@ -34,11 +34,11 @@ function Header() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Create Account</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link href="/create-account">Create Account</Nav.Link>
+            <Nav.Link eventKey={2} href="/login">
               Login
             </Nav.Link>
-            <Nav.Link eventKey={3} href="#memes">
+            <Nav.Link eventKey={3} href="/my-account">
               My Account
             </Nav.Link>
           </Nav>

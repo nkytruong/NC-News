@@ -1,14 +1,21 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Components/Header'
 import Home from './Components/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from './Components/Container';
-// import NavBar from './Components/NavBar'
-
 import './index.css'
 
+// import NavBar from './Components/NavBar'
+
+
 function App() {
+// const {user, setUser} = useContext(UserContext)
+
+// if(!user){
+//   return <Login setUser={setUser}/>
+// }
+
   return (
     <BrowserRouter>
     <Header />
