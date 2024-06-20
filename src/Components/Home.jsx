@@ -1,13 +1,16 @@
 import ArticleCards from "./ArticleCards";
 import Box from "@mui/material/Box";
 import CircularIndeterminate from "./LoadingCircle";
+import { UserContext } from "./UserContext";
+import { useContext } from "react";
 
 function Home({ articles, isLoading }) {
-    if(isLoading) {
-        return <CircularIndeterminate />
-      }
+  const { user, setUser } = useContext(UserContext);
+  if (isLoading) {
+    return <CircularIndeterminate />;
+  }
 
-    return (
+  return (
     <div>
       <h1>Latest News</h1>
       <Box

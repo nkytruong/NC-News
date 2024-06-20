@@ -11,9 +11,14 @@ export const getArticles = () => {
 };
 
 export const getArticle = (article_id) => {
-  return newsApi.get(`/articles/${article_id}`).then((res) => {
-    return res.data;
-  });
+  return newsApi
+    .get(`/articles/${article_id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export const getTopics = () => {
@@ -29,13 +34,25 @@ export const getCommentsByArticleId = (article_id) => {
 };
 
 export const patchArticleByArticleId = (article_id, patchBody) => {
-  console.log(article_id);
   return newsApi.patch(`/articles/${article_id}`, patchBody).then((res) => {
-    console.log(res.data);
     return res.data;
   });
   // .catch((error) => {
   //     console.error("Error updating article votes:", error);
   //     throw error;
   // });
+};
+
+export const getUsers = () => {
+  return newsApi.get("/users").then((res) => {
+    return res.data;
+  });
+};
+
+export const postComment = (article_id, postBody) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, postBody)
+    .then((res) => {
+      return res.data;
+    });
 };

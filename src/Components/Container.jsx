@@ -11,7 +11,7 @@ import { UserContext } from "../Components/UserContext";
 function Container() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  //     const {user, setUser} = useContext(UserContext)
+      const {user, setUser} = useContext(UserContext)
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,10 +35,10 @@ function Container() {
         <Route
           path="/articles/:article_id"
           element={
-            <ArticlePage isLoading={isLoading} setIsLoading={setIsLoading} />
+            <ArticlePage isLoading={isLoading} setIsLoading={setIsLoading} user={user}/>
           }
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login /> } />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
