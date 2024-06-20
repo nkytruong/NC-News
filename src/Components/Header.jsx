@@ -7,15 +7,15 @@ import { getTopics } from "../utils/api";
 import { Link } from "react-router-dom";
 
 function Header() {
-    const [topics, setTopics] = useState([]);
+  const [topics, setTopics] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     getTopics().then(({ topics }) => {
       setTopics(topics);
     });
   }, []);
 
-    return (
+  return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="/home">NC News</Navbar.Brand>
@@ -24,13 +24,13 @@ function Header() {
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <NavDropdown title="Topics" id="collapsible-nav-dropdown">
-            {topics.map((topic) => (
-                <NavDropdown.Item href={`/topics`} key={topic.slug}>{topic.slug}</NavDropdown.Item>
-            ))}
+              {topics.map((topic) => (
+                <NavDropdown.Item href={`/topics`} key={topic.slug}>
+                  {topic.slug}
+                </NavDropdown.Item>
+              ))}
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/topics">
-                All Topics
-              </NavDropdown.Item>
+              <NavDropdown.Item href="/topics">All Topics</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
