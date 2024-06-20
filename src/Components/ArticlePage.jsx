@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   getArticle,
   getCommentsByArticleId,
@@ -12,11 +12,13 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import * as React from "react";
 import Alert from "@mui/material/Alert";
-// import Stack from '@mui/material/Stack';
 import CircularIndeterminate from "./LoadingCircle";
+import CommentAdder from "./CommentAdder";
+import { UserContext } from "./UserContext";
 
 function ArticlePage({ isLoading, setIsLoading }) {
   const { article_id } = useParams();
+  const { user } = useContext(UserContext);
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [upvoteClicked, setUpvoteClicked] = useState(false);
@@ -46,14 +48,16 @@ function ArticlePage({ isLoading, setIsLoading }) {
       setUpvoteClicked(true);
       setUpvotes((currentUpvotes) => currentUpvotes + 1);
       const patchBody = { inc_votes: 1 };
-      patchArticleByArticleId(article_id, patchBody).catch((err) => {
-        setUpvoteClicked(false);
-        setUpvotes((currentUpvotes) => currentUpvotes - 1);
-        setErr("Something went wrong, please try again.");
-      });
+      patchArticleByArticleId(article_id, patchBody)
+        .then(() => setErr(null))
+        .catch((err) => {
+          setUpvoteClicked(false);
+          setUpvotes((currentUpvotes) => currentUpvotes - 1);
+          setErr("Something went wrong, please try again.");
+        });
     } else {
       setUpvoteClicked(false);
-      setUpvotes((currentUpvotes) => currentUpvotes - 1 );
+      setUpvotes((currentUpvotes) => currentUpvotes - 1);
       const patchBody = { inc_votes: -1 };
       patchArticleByArticleId(article_id, patchBody).catch((error) => {
         setUpvoteClicked(true);
@@ -66,6 +70,8 @@ function ArticlePage({ isLoading, setIsLoading }) {
   if (isLoading) {
     return <CircularIndeterminate />;
   }
+
+  console.log(comments)
 
   return (
     <div>
@@ -82,7 +88,8 @@ function ArticlePage({ isLoading, setIsLoading }) {
           Something went wrong. Please try again.
         </Alert>
       ) : null}
-      <h5>Comments ({article.comment_count})</h5>
+      <h5>Comments ({comments.length})</h5>
+      <CommentAdder setComments={setComments} article_id={article_id} />
       {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id} />;
       })}
