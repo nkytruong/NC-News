@@ -31,8 +31,8 @@ function ArticleCards({ article }) {
                 <Typography gutterBottom variant="h5" component="div">
                   {article.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {article.author} {article.created_at}
+                <Typography variant="body2" color="text.secondary" style={{whiteSpace: 'pre-wrap'}}>
+                  {article.author}   {new Date (article.created_at).toLocaleDateString()}
                  
                 </Typography>
               </CardContent>

@@ -1,8 +1,13 @@
 import ArticleCards from "./ArticleCards";
 import Box from "@mui/material/Box";
+import CircularIndeterminate from "./LoadingCircle";
 
-function Home({ articles, setArticles }) {
-  return (
+function Home({ articles, isLoading }) {
+    if(isLoading) {
+        return <CircularIndeterminate />
+      }
+
+    return (
     <div>
       <h1>Latest News</h1>
       <Box
