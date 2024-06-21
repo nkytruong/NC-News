@@ -75,11 +75,13 @@ function ArticlePage({ isLoading, setIsLoading }) {
 
   return (
     <div>
-      <h1>{article.title}</h1>
+      <section id="article-body">
+        <h1>{article.title}</h1>
       <h4> Written by {article.author}</h4>
       <h6>{new Date(article.created_at).toLocaleDateString()}</h6>
       <Image src={article.article_img_url} className="article_img" fluid />
       <p>{article.body}</p>
+        </section>
       <IconButton onClick={handleClick} aria-label="Votes for this article">
         {upvoteClicked ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />} {upvotes}
       </IconButton>

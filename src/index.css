@@ -1,2 +1,10 @@
-/* .article_img{
+/* #article_body {
+  display:flex
 } */
+
+.article_body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

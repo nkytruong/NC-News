@@ -3,13 +3,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import { useState, useContext } from "react";
 import { postComment } from "../utils/api";
 import { UserContext } from "./UserContext";
+import Login from "./Login";
 
 function CommentAdder({ setComments, article_id }) {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [newComment, setNewComment] = useState("");
 
   function handleChange(e) {
@@ -30,8 +31,12 @@ function CommentAdder({ setComments, article_id }) {
         });
       })
       .catch((err) => {
-        console.log("Error posting comment:", err)
-        return  <Alert severity="error">Error posting comment. Please try again</Alert>
+        console.log("Error posting comment:", err);
+        return (
+          <Alert severity="error">
+            Error posting comment. Please try again
+          </Alert>
+        );
       });
   }
 
@@ -56,9 +61,18 @@ function CommentAdder({ setComments, article_id }) {
           onChange={handleChange}
         />
       </div>
-      <Button variant="contained" type="submit" endIcon={<SendIcon />}>
-        Comment
-      </Button>
+      {user && newComment.length ? (
+        <Button variant="outlined" type="submit" endIcon={<SendIcon />}>
+          Comment
+        </Button>
+      ) : (
+        <div>
+          <Button variant="outlined" disabled endIcon={<SendIcon />}>
+            Comment
+          </Button>
+        </div>
+      )}
+      {!user ? <Alert severity="info">Please log in to comment</Alert> : null}
     </Box>
   );
 }
