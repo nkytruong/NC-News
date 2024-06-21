@@ -56,3 +56,12 @@ export const postComment = (article_id, postBody) => {
       return res.data;
     });
 };
+
+export const deleteComment = (comment_id) => {
+    return newsApi
+    .delete(`/comments/${comment_id}`)
+    .then((res) => {
+        console.log(res)
+        console.log(`Deleted post with ID ${comment_id}`)
+    })
+}

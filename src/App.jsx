@@ -10,9 +10,6 @@ import Login from "./Components/Login";
 function App() {
   const { user, setUser } = useContext(UserContext);
 console.log(user)
-  // if (!user) {
-  //   return <Login setUser={setUser} />;
-  // }
 
   return (
     <BrowserRouter>
