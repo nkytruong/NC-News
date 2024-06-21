@@ -8,9 +8,8 @@ import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
-function Header() {
+function Header({topics, setTopics}) {
   const { user, setUser } = useContext(UserContext);
-  const [topics, setTopics] = useState([]);
 
   useEffect(() => {
     getTopics().then(({ topics }) => {
@@ -21,14 +20,14 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/home">NC News</Navbar.Brand>
+        <Navbar.Brand href="/">NC News</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <NavDropdown title="Topics" id="collapsible-nav-dropdown">
               {topics.map((topic) => (
-                <NavDropdown.Item href={`/topics`} key={topic.slug}>
+                <NavDropdown.Item href={`/topics/${topic.slug}`} key={topic.slug}>
                   {topic.slug}
                 </NavDropdown.Item>
               ))}

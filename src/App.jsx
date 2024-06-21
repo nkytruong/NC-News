@@ -5,18 +5,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "./Components/Container";
 import "./index.css";
 import { UserContext, UserProvider } from "./Components/UserContext";
-import Login from "./Components/Login";
 
 function App() {
-  const { user, setUser } = useContext(UserContext);
-console.log(user)
+  const { user } = useContext(UserContext);
+  console.log(user);
+  const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/*" element={<Container />} />
-        </Routes>
+      <Header topics={topics} setTopics={setTopics} />
+      <Routes>
+        <Route
+          path="/*"
+          element={
+            <Container isLoading={isLoading} setIsLoading={setIsLoading} topics={topics} setTopics={setTopics}/>
+          }
+        />
+        {/* <Route path="/topics/:topic.slug" element={<TopicPages topic={topics}/>} />
+          <Route path="/topics" element={<AllTopicsPage/> }/> */}
+      </Routes>
     </BrowserRouter>
   );
 }

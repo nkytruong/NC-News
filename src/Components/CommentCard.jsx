@@ -16,7 +16,7 @@ export default function CommentCard({ comment }) {
 function handleDeleteClick(e) {
     e.preventDefault()
     deleteComment(comment.comment_id).catch((err) => {
-        return <Alert severity="error">This is an error Alert.</Alert>
+        return <Alert severity="error">Error deleting comment</Alert>
     })
     setIsDeleted(true)
 }
