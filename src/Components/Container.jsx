@@ -7,11 +7,12 @@ import MyAccount from "./MyAccount";
 import CreateAccount from "./CreateAccount";
 import { getArticles } from "../utils/api";
 import { UserContext } from "../Components/UserContext";
+import TopicPages from "./TopicPages";
+import AllTopicsPage from "./AllTopicsPage";
 
-function Container() {
+function Container({ isLoading, setIsLoading, topics, setTopics }) {
   const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-      const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,12 +36,18 @@ function Container() {
         <Route
           path="/articles/:article_id"
           element={
-            <ArticlePage isLoading={isLoading} setIsLoading={setIsLoading} user={user}/>
+            <ArticlePage
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              user={user}
+            />
           }
         />
-        <Route path="/login" element={<Login /> } />
+        <Route path="/login" element={<Login />} />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/topics/:topic" element={<TopicPages topic={topics} articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading} />}/>
+        <Route path="/topics" element={<AllTopicsPage topics={topics} />} />
       </Routes>
     </div>
   );
