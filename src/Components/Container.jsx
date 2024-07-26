@@ -27,11 +27,11 @@ function Container({ isLoading, setIsLoading, topics, setTopics }) {
       <Routes>
         <Route
           path="/"
-          element={<Home articles={articles} isLoading={isLoading} />}
+          element={<Home articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading} />}
         />
         <Route
           path="/home"
-          element={<Home articles={articles} isLoading={isLoading} />}
+          element={<Home articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
         <Route
           path="/articles/:article_id"

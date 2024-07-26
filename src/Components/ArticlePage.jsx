@@ -74,7 +74,7 @@ function ArticlePage({ isLoading, setIsLoading }) {
   console.log(comments)
 
   return (
-    <div>
+    <div className='container'>
       <section id="article-body">
         <h1>{article.title}</h1>
       <h4> Written by {article.author}</h4>
@@ -83,7 +83,7 @@ function ArticlePage({ isLoading, setIsLoading }) {
       <p>{article.body}</p>
         </section>
       <IconButton onClick={handleClick} aria-label="Votes for this article">
-        {upvoteClicked ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />} {upvotes}
+        {upvoteClicked ? <ThumbUpAltIcon style={{ marginRight: 4 }}/> : <ThumbUpOffAltIcon style={{ marginRight: 4 }}/>} {upvotes}
       </IconButton>
       {err ? (
         <Alert variant="outlined" severity="error">
@@ -92,8 +92,12 @@ function ArticlePage({ isLoading, setIsLoading }) {
       ) : null}
       <h5>Comments ({comments.length})</h5>
       <CommentAdder setComments={setComments} article_id={article_id} />
+      <br></br>
       {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />;
+        return <>
+        <CommentCard comment={comment} key={comment.comment_id} />
+        <br></br>
+        </>
       })}
     </div>
   );

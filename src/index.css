@@ -2,9 +2,23 @@
   display:flex
 } */
 
-.article_body {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#article-body {
+text-align: center;
+
 }
+
+#article-body p {
+text-align: left;
+}
+
+.title {
+  /* text-align:left;
+  margin-left: 20px; */
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+/* #topicName {
+  margin: 50;
+} */
