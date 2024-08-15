@@ -11,14 +11,15 @@ text-align: center;
 text-align: left;
 }
 
-.title {
-  /* text-align:left;
-  margin-left: 20px; */
-  display: flex;
-  justify-content: space-around;
-  align-content: space-around;
+.custom-carousel {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: auto;
 }
 
-/* #topicName {
-  margin: 50;
-} */
+.custom-carousel .carousel-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

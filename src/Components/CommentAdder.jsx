@@ -72,6 +72,7 @@ function CommentAdder({ setComments, article_id }) {
           </Button>
         </div>
       )}
+      <br></br>
       {!user ? <Alert severity="info">Please log in to comment</Alert> : null}
     </Box>
   );

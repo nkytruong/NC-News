@@ -20,9 +20,16 @@ function TopicPages({
     getArticles(params).then(({ articles }) => {
       setArticles(articles);
       console.log(articles);
-      setIsLoading(false);
+    })
+      .catch((error) => {
+        console.error("Failed to fetch articles:", error);
+        setArticles([]); // Clear articles if fetching fails
+      })
+      .finally(() => {
+        setIsLoading(false);
+      // setIsLoading(false);
     });
-  }, []);
+  }, [topic]);
 
   if (isLoading) {
     return <CircularIndeterminate />;

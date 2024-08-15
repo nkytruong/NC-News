@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
+// import ArticleCarousel from "./Carousel";
 
 function Home({ articles, setArticles, isLoading, setIsLoading }) {
   const [sortBy, setSortBy] = useState("");
@@ -66,22 +67,34 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
 
   return (
     <div>
-      <h1 className="title">Latest News</h1>
+      {/* <Box sx={{
+          marginLeft: 4,
+          marginRight:4,
+          alignItems: "center",
+        }}>
+      <h1>Trending</h1>
+      </Box>
+      <ArticleCarousel articles={articles}/> */}
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           alignItems: "center",
-          gap: 2,
+          justifyContent: "space-between",
+          // gap: 2,
+          marginLeft: 4,
+          marginRight:4
         }}
       >
+        <h1 className="title" style={{ whiteSpace: "nowrap" }}>All Articles</h1>
         <Box
           sx={{
             minWidth: 400,
             display: "flex",
             flexDirection: "row",
             justifyContent: "flex-end",
-            margin: 2,
+            marginTop: 2,
+            marginBottom: 2,
             width: "100%", // Ensure the Box takes the full width
           }}
         >

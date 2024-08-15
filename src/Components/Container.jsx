@@ -27,11 +27,25 @@ function Container({ isLoading, setIsLoading, topics, setTopics }) {
       <Routes>
         <Route
           path="/"
-          element={<Home articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading} />}
+          element={
+            <Home
+              articles={articles}
+              setArticles={setArticles}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          }
         />
         <Route
           path="/home"
-          element={<Home articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={
+            <Home
+              articles={articles}
+              setArticles={setArticles}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          }
         />
         <Route
           path="/articles/:article_id"
@@ -46,7 +60,18 @@ function Container({ isLoading, setIsLoading, topics, setTopics }) {
         <Route path="/login" element={<Login />} />
         <Route path="/my-account" element={<MyAccount />} />
         <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/topics/:topic" element={<TopicPages topic={topics} articles={articles} setArticles={setArticles} isLoading={isLoading} setIsLoading={setIsLoading} />}/>
+        <Route
+          path="/topics/:topic"
+          element={
+            <TopicPages
+              topic={topics}
+              articles={articles}
+              setArticles={setArticles}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          }
+        />
         <Route path="/topics" element={<AllTopicsPage topics={topics} />} />
       </Routes>
     </div>

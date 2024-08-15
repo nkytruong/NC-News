@@ -71,7 +71,7 @@ function ArticlePage({ isLoading, setIsLoading }) {
     return <CircularIndeterminate />;
   }
 
-  console.log(comments)
+  // console.log(comments)
 
   return (
     <div className='container'>
@@ -80,6 +80,7 @@ function ArticlePage({ isLoading, setIsLoading }) {
       <h4> Written by {article.author}</h4>
       <h6>{new Date(article.created_at).toLocaleDateString()}</h6>
       <Image src={article.article_img_url} className="article_img" fluid />
+      <br></br>
       <p>{article.body}</p>
         </section>
       <IconButton onClick={handleClick} aria-label="Votes for this article">
