@@ -15,11 +15,11 @@ import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 import Button from '@mui/material/Button';
 
-function Login() {
+function Login({isLoggedIn, setIsLoggedIn}) {
   const { user, setUser } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [usersLoading, setUsersLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // function handleChange(e) {
   //   setUsernameInput(e.target.value)
@@ -43,10 +43,10 @@ function Login() {
     setIsLoggedIn(true);
   }
 
-function handleSignOutClick(e) {
-setUser("")
-setIsLoggedIn(false)
-}
+// function handleSignOutClick(e) {
+// setUser("")
+// setIsLoggedIn(false)
+// }
 
   return (
     <div>
@@ -56,7 +56,7 @@ setIsLoggedIn(false)
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Successfully logged in
           </Alert>
-          <Button variant="outlined" onClick={handleSignOutClick}>Sign Out</Button>
+          {/* <Button variant="outlined" onClick={handleSignOutClick}>Sign Out</Button> */}
         </div>
       ) : (
         <div>

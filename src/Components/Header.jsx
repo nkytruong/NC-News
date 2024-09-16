@@ -10,6 +10,7 @@ import { useContext } from "react";
 
 function Header({topics, setTopics}) {
   const { user, setUser } = useContext(UserContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     getTopics().then(({ topics }) => {
@@ -36,13 +37,14 @@ function Header({topics, setTopics}) {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="/create-account">Create Account</Nav.Link>
-            <Nav.Link eventKey={2} href="/login">
+            {/* <Nav.Link href="/create-account">Create Account</Nav.Link> */}
+            {!user ? <Nav.Link eventKey={2} href="/login" isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
               Login
-            </Nav.Link>
-            <Nav.Link eventKey={3} href="/my-account">
+            </Nav.Link> :
+            <Nav.Link eventKey={3} href="/my-account" isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
               My Account
             </Nav.Link>
+}
           </Nav>
         </Navbar.Collapse>
       </Container>
