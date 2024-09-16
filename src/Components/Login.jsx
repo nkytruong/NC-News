@@ -14,12 +14,15 @@ import CircularIndeterminate from "./LoadingCircle";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Login({isLoggedIn, setIsLoggedIn}) {
   const { user, setUser } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [usersLoading, setUsersLoading] = useState(true);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // function handleChange(e) {
   //   setUsernameInput(e.target.value)
@@ -41,6 +44,9 @@ function Login({isLoggedIn, setIsLoggedIn}) {
     e.preventDefault();
     setUser(e.target.innerText);
     setIsLoggedIn(true);
+    setTimeout(() => {
+      navigate(`/`);
+    }, 2000);
   }
 
 // function handleSignOutClick(e) {
@@ -49,12 +55,12 @@ function Login({isLoggedIn, setIsLoggedIn}) {
 // }
 
   return (
-    <div>
+    <div className="page-container">
       <h1>Login</h1>
       {user ? (
         <div>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-            Successfully logged in
+            Successfully logged in. Redirecting...
           </Alert>
           {/* <Button variant="outlined" onClick={handleSignOutClick}>Sign Out</Button> */}
         </div>
@@ -85,6 +91,8 @@ function Login({isLoggedIn, setIsLoggedIn}) {
               </Select>
             </FormControl>
           </Box>
+          <br/>
+          <p>Don't have an account yet? Sign up <Link to="/create-account">here</Link></p>
         </div>
       )}
     </div>

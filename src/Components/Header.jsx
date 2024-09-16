@@ -38,10 +38,10 @@ function Header({topics, setTopics}) {
           </Nav>
           <Nav>
             {/* <Nav.Link href="/create-account">Create Account</Nav.Link> */}
-            {!user ? <Nav.Link eventKey={2} href="/login" isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
+            {!user ? <Nav.Link eventKey={2} href="/login" >
               Login
             </Nav.Link> :
-            <Nav.Link eventKey={3} href="/my-account" isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
+            <Nav.Link eventKey={3} href="/my-account" >
               My Account
             </Nav.Link>
 }

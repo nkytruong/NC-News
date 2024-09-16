@@ -13,6 +13,7 @@ import AllTopicsPage from "./AllTopicsPage";
 function Container({ isLoading, setIsLoading, topics, setTopics }) {
   const [articles, setArticles] = useState([]);
   const { user, setUser } = useContext(UserContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,8 +58,18 @@ function Container({ isLoading, setIsLoading, topics, setTopics }) {
             />
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/my-account" element={<MyAccount />} />
+        <Route
+          path="/login"
+          element={
+            <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+        <Route
+          path="/my-account"
+          element={
+            <MyAccount isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route
           path="/topics/:topic"
