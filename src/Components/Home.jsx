@@ -19,8 +19,9 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
   };
 
   const handleOrderChange = (event) => {
-    if(sortBy){
-      setOrderBy(event.target.value);    }
+    if (sortBy) {
+      setOrderBy(event.target.value);
+    }
   };
 
   const getSortByValue = (sortBy) => {
@@ -51,7 +52,9 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
     if (sortBy) {
       const sortByValue = getSortByValue(sortBy);
       const orderValue = getOrderValue(orderBy);
-      const params = orderBy ? { sort_by: sortByValue, order: orderValue } : { sort_by: sortByValue };
+      const params = orderBy
+        ? { sort_by: sortByValue, order: orderValue }
+        : { sort_by: sortByValue };
 
       setIsLoading(true);
       getArticles(params).then(({ articles }) => {
@@ -78,27 +81,29 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "flex-start", md: "center" },
           justifyContent: "space-between",
-          // gap: 2,
-          marginLeft: 4,
-          marginRight:4
+          gap: { xs: 1, md: 0 },
+          marginBottom: 2,
         }}
       >
-        <h1 className="title" style={{ whiteSpace: "nowrap" }}>All Articles</h1>
+        <h1 className="title" style={{ whiteSpace: "nowrap" }}>
+          All Articles
+        </h1>
         <Box
           sx={{
-            minWidth: 400,
             display: "flex",
             flexDirection: "row",
-            justifyContent: "flex-end",
-            marginTop: 2,
-            marginBottom: 2,
-            width: "100%", // Ensure the Box takes the full width
+            flexWrap: "wrap",
+            justifyContent: { xs: "flex-start", md: "flex-end" },
+            gap: 1,
+            alignItems: "center",
+            marginTop: { xs: 2, md: 0 },
+            width: "100%"
           }}
         >
-          <FormControl sx={{ minWidth: 150, marginRight: 2 }}>
+          <FormControl sx={{ minWidth: 120, maxWidth: 120}}>
             <InputLabel id="sort-by-label">Sort By</InputLabel>
             <Select
               labelId="sort-by-label"
@@ -113,7 +118,7 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ minWidth: 150, marginRight:2 }}>
+          <FormControl sx={{ minWidth: 120, maxWidth: 120}}>
             <InputLabel id="order-by-label">Order</InputLabel>
             <Select
               labelId="order-by-label"
@@ -142,7 +147,6 @@ function Home({ articles, setArticles, isLoading, setIsLoading }) {
           return (
             <ArticleCards
               article={article}
-              // articles={articles}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
               key={article.article_id}

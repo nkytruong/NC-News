@@ -24,7 +24,7 @@ function Container({ isLoading, setIsLoading, topics, setTopics }) {
   }, []);
 
   return (
-    <div>
+    <div className="page-container">
       <Routes>
         <Route
           path="/"
